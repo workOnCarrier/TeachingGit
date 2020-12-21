@@ -17,14 +17,14 @@ class node{
         }
 
 };
-
+// Inertion at First
 void insertAtHead(node* &head,int val){
     node* n = new node(val);
     n->next = head;
     head = n;
 
 }
-
+// Insertion at End
 void insertAtTail(node* &head,int val){
     node* n = new node (val);
     if(head == NULL){

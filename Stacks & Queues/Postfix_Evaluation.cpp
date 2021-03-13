@@ -39,4 +39,4 @@ int main() {
     return 0;
 }
 
-// Thereas just a min difference that here we need to observe the operands
+// Thereas just a min difference that here we need to observe the operands.

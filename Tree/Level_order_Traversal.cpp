@@ -8,34 +8,28 @@ struct Node{
     Node*right;
 };
 
-void levelOrder(Node*root){
-    if(root == NULL) 
-        return;
-    queue <Node *> q;
-    q.push(root);
+void LevelOrder(Node*root){
+    if(root == NULL) return;
+    queue <Node *> Q;
+    Q.push(root);
     // While there is atleast one dicovered node
-    while(!q.empty()){
-        Node* current = q.front();
-        cout<<current->data<<" "<<endl;
-        q.pop(); // Removing Element at the front
-        if(current->left != NULL){ 
-            q.push(current-> left);}
-        if(current->right!= NULL){ 
-            q.push(current-> right);}
+    while(!Q.empty()){
+        Node* current = Q.front();
+        Q.pop(); // Removing Element at the front
+        cout<<current->data<<" ";
+        if(current->left != NULL) Q.push(current-> left);
+        if(current->right!= NULL) Q.push(current-> right);
     }
 }
-Node* GetNewNode(char data){
-    Node* NewNode = new Node();
-    NewNode->left = NULL;
-    NewNode->right = NULL;
-    return NewNode;
-}
+
 Node* Insert(Node* root, char data){
-    if (root == NULL){
-        root = GetNewNode(data); 
-    }
-    else if (data<= root->data) {Insert(root->left,data);}
-    else {Insert(root->right,data);}
+   if(root == NULL) {
+		root = new Node();
+		root->data = data;
+		root->left = root->right = NULL;
+	}
+    else if (data<= root->data)  root->left = Insert(root->left,data);
+    else root->right = Insert(root->right,data);
     return root;
 }
 int main(){
@@ -45,7 +39,7 @@ int main(){
 	root = Insert(root,'A'); root = Insert(root,'C');
 
     // Print Nodes in Level Order
-    levelOrder(root); 
+    LevelOrder(root); 
     
     return 0;   
 }   

@@ -54,20 +54,20 @@ struct Node{
 // }
 
 // More Specific Approach
-int IsBSTUtil(Node*root,int minValue,int maxValue){
+bool IsBSTUtil(Node*root,int minValue,int maxValue){
     if (root == NULL){
-        return 1;
+        return true;
     }
-    if (root->data > minValue && root->data <maxValue
+    else if (root->data > minValue && root->data <maxValue
         && IsBSTUtil(root->left,minValue,root->data)
         && IsBSTUtil(root->right,root->data,maxValue)){
             return 1;
         }
     else{
-        return 0;
+        return false;
     }
 }
-int IsBinarySeachTree(Node*root){
+bool IsBinarySeachTree(Node*root){
     return IsBSTUtil(root,INT_MIN,INT_MAX);
 }
 
@@ -83,7 +83,7 @@ Node* Insert(Node*root,int data){
     if (root == NULL){
         root = getNewNode(data);
     }
-    if (data<=root->data){
+    else if (data<=root->data){
         root->left =  Insert(root->left,data);
     }
     else {
@@ -111,5 +111,10 @@ int main(){
     // }
     // else {cout<<"No!! Its Not a BST \n";
     // }
-    IsBinarySeachTree(root);
+    if(IsBinarySeachTree(root)== true){
+        cout<<"Yes! Its a BST\n";
+    }
+    else{
+        cout<<"NOT A BST \n";
+    }
 }

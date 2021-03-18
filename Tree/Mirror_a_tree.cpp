@@ -21,12 +21,8 @@ Node* Mirror(Node*root){
     (root->left) = (root->right);
     (root->right) = temp;
 
-    if (root->left){
-        Mirror(root->left);
-    }
-    if (root->right){
-        Mirror(root->right);
-    }
+    Mirror(root->left);
+    Mirror(root->right);
     return root;
 }
 

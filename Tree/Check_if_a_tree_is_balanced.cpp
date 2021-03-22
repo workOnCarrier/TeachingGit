@@ -38,7 +38,7 @@ bool Balancedtree(Node* root){
     if(root == NULL) return true;
     int T1 = Height(root->left);
     int T2 = Height(root->right);
-    if(T1-T2<=1 && Balancedtree(root->left) && Balancedtree(root->right)) return true;
+    if(abs(T1-T2<=1) && Balancedtree(root->left) && Balancedtree(root->right)) return true;
     else return false;
 }
 

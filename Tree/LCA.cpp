@@ -24,6 +24,9 @@ Node* LCA(Node*root,int n1,int n2){
     if(leftLCA && rightLCA){
         return root;
     }
+    if(leftLCA==NULL && rightLCA==NULL){
+        return NULL;
+    }
 
     if(leftLCA!=NULL){
         return leftLCA;

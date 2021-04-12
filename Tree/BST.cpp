@@ -38,22 +38,29 @@ bool Search(BstNode* root,int data){
     else if (data <= root->data) return Search(root->left,data);
     else if (data >= root->data) return Search(root->right,data); 
 }
-
+void InorderPrint(BstNode* root){
+    if(root==NULL) return ;
+    InorderPrint(root->left);
+    cout<<root->data<<" ";
+    InorderPrint(root->right);
+}
 
 int main(){
     BstNode* root = NULL;
     root = Insert(root,15);
-    root = Insert(root,10);
-    root = Insert(root,20);
-    root = Insert(root,25);
-    root = Insert(root,8);
-    root = Insert(root,12);
+    Insert(root,10);
+    Insert(root,20);
+    Insert(root,25);
+    Insert(root,8);
+    Insert(root,12);
 
     cout<<" Enter the number to be searched: ";
     int number;
     cin>>number;
     if(Search(root,number)== true) cout<<" Found it!!"<<endl;
     else cout<<"Not Found!!"<<endl;    
+
+    InorderPrint(root);
 
     return 0;
 }

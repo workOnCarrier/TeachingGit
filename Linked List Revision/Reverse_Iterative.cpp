@@ -6,9 +6,29 @@ struct Node{
     Node * next;
     Node(int val){
         data = val;
-        next  =NULL;
+        next = NULL;
     }
 };
+
+Node* Reverse(Node* head){
+    if(head == NULL){
+        cout<<"List is Empty\n";
+        return NULL;
+    }
+    Node * currptr = head;
+    Node *prevptr=NULL;
+    Node*nextptr;
+    while(currptr!=NULL){
+        nextptr = currptr->next;
+        currptr->next = prevptr;
+        
+        prevptr = currptr;
+        currptr = nextptr; 
+    }
+    head = prevptr;
+    return head;
+}
+
 void InsertAtHead(Node* &head,int value){
     Node * temp = new Node(value);
     temp->next = head;
@@ -29,23 +49,7 @@ void InsertatTail(Node* &head,int value){
     temp->next = NewNode;
 }
 
-
-void insertAtNth(Node * &head,int value,int n){
-    Node *NewNode = new Node(value);
-    if(head == NULL){
-        NewNode->next = head;
-        head = NewNode;
-        return;
-    }
-    Node* temp = head;
-     
-    for(int i =0;i<n-2;i++){
-        temp = temp->next;
-    }
-    NewNode->next = temp->next;    temp->next = NewNode;
-}
-
-void Print(Node * head){
+void Print(Node * &head){
     if(head == NULL){
         cout<<"Empty List"<<endl;
         return;
@@ -67,9 +71,10 @@ int main(){
     InsertatTail(head,134);
     InsertatTail(head,19);
     InsertatTail(head,17);
-
-    insertAtNth(head,1,5);
     Print(head);
 
+    Node * Reversal = Reverse(head);
+    Print(Reversal);
+    
     return 0;
 }

@@ -28,7 +28,7 @@ int main(){
     int n = sizeof(arr)/sizeof(arr[0]);
     int k = 2;
 
-    vector<int> res;
+    vector<int> res = kFrequent(arr, n, k);
     for(auto i: res){
         cout<<i<<" ";
     }cout<<endl;

@@ -8,11 +8,16 @@ void addEdge(vector<int>adj[],int u,int v){
 void printEdge(vector<int>adj[],int V){
     for(int i=0;i<V;i++){
         cout<<"The adjacency list of vertex "<<i<<":";
-        for(auto x:adj[i]){
+        for(int x:adj[i]){
             cout<<x<<",";
         }cout<<endl;
     }
 }
+
+
+
+
+
 
 int main(){
     int V = 5;

@@ -30,7 +30,7 @@ int main(){
     }
 
     bool cycle = false;
-    vector<bool> vis(n,false);
+    vector<bool> vis(n,false); // It means initially all of the elements are false
 
     for(int i=0;i<n;i++){
         if(!vis[i] and iscycle(i,adj,vis,-1)){
